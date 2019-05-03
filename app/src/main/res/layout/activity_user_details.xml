@@ -53,12 +53,12 @@
             android:text="@string/last_name"/>
 
         <android.support.v7.widget.AppCompatTextView
-            android:id="@+id/second_name"
+            android:id="@+id/last_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/user_details_activity_field_margin_small_y"
             android:textSize="@dimen/text_size_big"
-            tools:text="Test Second Name"/>
+            tools:text="Test Last Name"/>
 
         <android.support.v7.widget.AppCompatTextView
             android:layout_width="wrap_content"

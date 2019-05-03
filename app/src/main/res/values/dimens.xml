@@ -8,9 +8,11 @@
 
     <!--Item User-->
     <dimen name="item_user_picture_size">100dp</dimen>
+    <dimen name="item_user_flag_width">100dp</dimen>
+    <dimen name="item_user_flag_height">50dp</dimen>
     <dimen name="item_user_nationality_icon_margin_start">50dp</dimen> <!--This should be half of the user picture size-->
     <dimen name="item_user_margin_x">20dp</dimen>
-    <dimen name="item_user_margin_y">20dp</dimen>
+    <dimen name="item_user_margin_y">10dp</dimen>
     <dimen name="item_user_padding_x">10dp</dimen>
     <dimen name="item_user_padding_y">10dp</dimen>
     <dimen name="item_user_field_margin_x">@dimen/item_user_padding_x</dimen>

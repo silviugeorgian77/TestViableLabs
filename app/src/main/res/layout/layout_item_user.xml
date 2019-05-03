@@ -7,35 +7,20 @@
     android:layout_marginStart="@dimen/item_user_margin_x"
     android:layout_marginEnd="@dimen/item_user_margin_x"
     android:layout_marginTop="@dimen/item_user_margin_y"
-    android:layout_marginBottom="@dimen/item_user_margin_y"
-    android:paddingLeft="@dimen/item_user_padding_x"
-    android:paddingStart="@dimen/item_user_padding_x"
-    android:paddingRight="@dimen/item_user_padding_x"
-    android:paddingEnd="@dimen/item_user_padding_x"
-    android:paddingTop="@dimen/item_user_padding_y"
-    android:paddingBottom="@dimen/item_user_padding_y">
+    android:layout_marginBottom="@dimen/item_user_margin_y">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/item_user_padding_x"
+        android:paddingStart="@dimen/item_user_padding_x"
+        android:paddingRight="@dimen/item_user_padding_x"
+        android:paddingEnd="@dimen/item_user_padding_x"
+        android:paddingTop="@dimen/item_user_padding_y"
+        android:paddingBottom="@dimen/item_user_padding_y">
 
         <com.timmystudios.testviablelabs.views.CircleFrameLayout
-            android:id="@+id/nationality_icon_layout"
-            android:layout_width="@dimen/item_user_picture_size"
-            android:layout_height="@dimen/item_user_picture_size"
-            android:layout_marginStart="@dimen/item_user_nationality_icon_margin_start"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <android.support.v7.widget.AppCompatImageView
-                android:id="@+id/nationality_icon"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                tools:src="#FF0000"/>
-
-        </com.timmystudios.testviablelabs.views.CircleFrameLayout>
-
-        <com.timmystudios.testviablelabs.views.CircleFrameLayout
+            android:id="@+id/picture_layout"
             android:layout_width="@dimen/item_user_picture_size"
             android:layout_height="@dimen/item_user_picture_size"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -49,6 +34,15 @@
 
         </com.timmystudios.testviablelabs.views.CircleFrameLayout>
 
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/nationality_icon"
+            android:layout_width="@dimen/item_user_flag_width"
+            android:layout_height="@dimen/item_user_flag_height"
+            android:layout_marginStart="@dimen/item_user_nationality_icon_margin_start"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/picture_layout"
+            tools:src="#FF0000"/>
+
         <android.support.constraint.Guideline
             android:id="@+id/center_guideline"
             android:layout_width="wrap_content"
@@ -60,7 +54,7 @@
             android:id="@+id/name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toEndOf="@id/nationality_icon_layout"
+            app:layout_constraintStart_toEndOf="@id/nationality_icon"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toTopOf="@id/center_guideline"
             android:layout_marginStart="@dimen/item_user_field_margin_x"
@@ -72,7 +66,7 @@
             android:id="@+id/age"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toEndOf="@id/nationality_icon_layout"
+            app:layout_constraintStart_toEndOf="@id/nationality_icon"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/center_guideline"
             android:layout_marginStart="@dimen/item_user_field_margin_x"

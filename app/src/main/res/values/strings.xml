@@ -4,4 +4,7 @@
     <string name="last_name">Last Name:</string>
     <string name="age">Age:</string>
     <string name="email">Email:</string>
+    <string name="error_title">Error</string>
+    <string name="error_description">An error occurred while fetching the users. Please try again later.</string>
+    <string name="error_button">Try again</string>
 </resources>

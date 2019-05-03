@@ -2,24 +2,30 @@ package com.timmystudios.testviablelabs.models;
 
 import com.google.gson.annotations.SerializedName;
 
-public class UserUnmapped {
+import java.util.List;
 
-    @SerializedName("name")
-    public Name name;
-    @SerializedName("dob")
-    public Dob dob;
-    @SerializedName("email")
-    public String email;
-    @SerializedName("nationality")
-    public String nationality;
-    @SerializedName("picture")
-    public Picture picture;
+public class UserListResponse {
+
+    public List<Result> results;
+
+    public static class Result {
+        @SerializedName("name")
+        public Name name;
+        @SerializedName("dob")
+        public Dob dob;
+        @SerializedName("email")
+        public String email;
+        @SerializedName("nat")
+        public String nat;
+        @SerializedName("picture")
+        public Picture picture;
+    }
 
     public static class Name {
         @SerializedName("first")
         public String first;
-        @SerializedName("second")
-        public String second;
+        @SerializedName("last")
+        public String last;
     }
 
     public static class Dob {

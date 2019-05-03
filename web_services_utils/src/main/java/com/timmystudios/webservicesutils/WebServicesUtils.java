@@ -52,12 +52,6 @@ public class WebServicesUtils {
     }
 
     public static void init(Context context, HashMap<String, String> defaultQueryParams) {
-        try {
-            ProviderInstaller.installIfNeeded(context);
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-
         RxJavaPlugins.setErrorHandler(Functions.<Throwable>emptyConsumer());
         webServicesUtils = new WebServicesUtils();
         webServicesUtils.retrofit = createRetrofit(defaultQueryParams);
