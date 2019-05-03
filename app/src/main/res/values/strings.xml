@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">TestViableLabs</string>
+    <string name="main_activity_title">User List</string>
+    <string name="user_details_activity_title">User Details</string>
     <string name="first_name">First Name:</string>
     <string name="last_name">Last Name:</string>
     <string name="age">Age:</string>
