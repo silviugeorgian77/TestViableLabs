@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--Text-->
+    <dimen name="text_size_small">15sp</dimen>
+    <dimen name="text_size_medium">18sp</dimen>
+    <dimen name="text_size_big">22sp</dimen>
+    <!--End Text-->
+
+    <!--Item User-->
+    <dimen name="item_user_picture_size">100dp</dimen>
+    <dimen name="item_user_nationality_icon_margin_start">50dp</dimen> <!--This should be half of the user picture size-->
+    <dimen name="item_user_margin_x">20dp</dimen>
+    <dimen name="item_user_margin_y">20dp</dimen>
+    <dimen name="item_user_padding_x">10dp</dimen>
+    <dimen name="item_user_padding_y">10dp</dimen>
+    <dimen name="item_user_field_margin_x">@dimen/item_user_padding_x</dimen>
+    <dimen name="item_user_field_margin_y">@dimen/item_user_padding_x</dimen>
+    <!--End Item User-->
+
+    <!--User Details Activity-->
+    <dimen name="user_details_activity_picture_size">200dp</dimen>
+    <dimen name="user_details_activity_padding_x">20dp</dimen>
+    <dimen name="user_details_activity_picture_margin_bottom">50dp</dimen>
+    <dimen name="user_details_activity_field_margin_small_y">5dp</dimen>
+    <dimen name="user_details_activity_field_margin_big_y">10dp</dimen>
+    <!--End User Details Activity-->
+</resources>

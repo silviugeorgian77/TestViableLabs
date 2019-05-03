@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/user_details_activity_padding_x"
+        android:paddingStart="@dimen/user_details_activity_padding_x"
+        android:paddingRight="@dimen/user_details_activity_padding_x"
+        android:paddingEnd="@dimen/user_details_activity_padding_x"
+        tools:context=".activities.UserDetailsActivity"
+        android:gravity="center"
+        android:layout_gravity="center">
+
+        <com.timmystudios.testviablelabs.views.CircleFrameLayout
+            android:layout_width="@dimen/user_details_activity_picture_size"
+            android:layout_height="@dimen/user_details_activity_picture_size"
+            android:layout_marginBottom="@dimen/user_details_activity_picture_margin_bottom"
+            android:layout_gravity="center">
+
+            <android.support.v7.widget.AppCompatImageView
+                android:id="@+id/picture"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:src="#FF0000"/>
+
+        </com.timmystudios.testviablelabs.views.CircleFrameLayout>
+
+        <android.support.v7.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_size_medium"
+            android:text="@string/first_name"/>
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/first_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/user_details_activity_field_margin_small_y"
+            android:textSize="@dimen/text_size_big"
+            tools:text="Test First Name"/>
+
+        <android.support.v7.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/user_details_activity_field_margin_big_y"
+            android:textSize="@dimen/text_size_medium"
+            android:text="@string/last_name"/>
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/second_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/user_details_activity_field_margin_small_y"
+            android:textSize="@dimen/text_size_big"
+            tools:text="Test Second Name"/>
+
+        <android.support.v7.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/user_details_activity_field_margin_big_y"
+            android:textSize="@dimen/text_size_medium"
+            android:text="@string/email"/>
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/user_details_activity_field_margin_small_y"
+            android:textSize="@dimen/text_size_big"
+            tools:text="Test Email"/>
+
+    </LinearLayout>
+
+</ScrollView>

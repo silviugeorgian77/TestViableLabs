@@ -1,7 +1,9 @@
-package com.timmystudios.testviablelabs;
+package com.timmystudios.testviablelabs.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.timmystudios.testviablelabs.R;
 
 public class MainActivity extends AppCompatActivity {
 
