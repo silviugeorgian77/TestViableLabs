@@ -64,15 +64,14 @@ public class MainActivity extends AppCompatActivity {
 
         userProviderService = WebServicesUtils.getService(UserProviderService.class);
 
-        userListParams.put(UserProviderService.PAGE, String.valueOf(1));
+        userListParams.put(UserProviderService.RESULTS, String.valueOf(RESULTS_PER_PAGE));
         increaseCurrentPage();
         updateUserList();
     }
 
     private void increaseCurrentPage() {
         currentPage++;
-        int resultsPerPage = RESULTS_PER_PAGE * currentPage;
-        userListParams.put(UserProviderService.RESULTS, String.valueOf(resultsPerPage));
+        userListParams.put(UserProviderService.PAGE, String.valueOf(currentPage));
     }
 
     private void updateUserList() {
@@ -96,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
     private void showUserList() {
         userAdapter.setUserList(userList);
         int addedItemsCount = userList.size() - previousItemCount;
-        userAdapter.notifyItemRangeInserted(previousItemCount - 1, addedItemsCount);
+        userAdapter.notifyItemRangeInserted(previousItemCount, addedItemsCount);
     }
 
     private void showErrorDialog() {
