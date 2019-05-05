@@ -2,6 +2,7 @@ package com.timmystudios.testviablelabs.activities;
 
 import android.content.DialogInterface;
 import android.support.annotation.NonNull;
+import android.support.v4.widget.ContentLoadingProgressBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -30,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     private List<User> userList = new ArrayList<>();
     private UserProviderService userProviderService;
     private Map<String, String> userListParams = new HashMap<>();
+    private ContentLoadingProgressBar progressBar;
     private RecyclerView recyclerView;
     private UserAdapter userAdapter;
     private final int RESULTS_PER_PAGE = 20;
@@ -41,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        progressBar = findViewById(R.id.progress_bar);
         recyclerView = findViewById(R.id.recycler);
         LinearLayoutManager layoutManager = new LinearLayoutManager(
                 this,
@@ -75,6 +78,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void updateUserList() {
+        if (userList.isEmpty()) {
+            progressBar.show();
+        }
         Call<UserListResponse> userListCall = userProviderService.getUsers(userListParams);
         userListCall.enqueue(new Callback<UserListResponse>() {
             @Override
@@ -83,11 +89,13 @@ public class MainActivity extends AppCompatActivity {
                 previousItemCount = userList.size();
                 userList.addAll(UserListResponseMapper.mapUserList(response.body()));
                 showUserList();
+                progressBar.hide();
             }
 
             @Override
             public void onFailure(Call<UserListResponse> call, Throwable t) {
                 showErrorDialog();
+                progressBar.hide();
             }
         });
     }
