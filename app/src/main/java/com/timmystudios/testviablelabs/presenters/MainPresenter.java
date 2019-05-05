@@ -1,6 +1,7 @@
 package com.timmystudios.testviablelabs.presenters;
 
-import com.timmystudios.testviablelabs.activities.MainActivity;
+import com.timmystudios.testviablelabs.contracts.MainActivityContract;
+import com.timmystudios.testviablelabs.contracts.MainPresenterContract;
 import com.timmystudios.testviablelabs.mappers.UserListResponseMapper;
 import com.timmystudios.testviablelabs.models.User;
 import com.timmystudios.testviablelabs.models.UserListResponse;
@@ -16,23 +17,19 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class MainPresenter {
-
-    public enum Status {
-        IDLE,
-        FETCHING
-    }
+public class MainPresenter implements MainPresenterContract {
 
     private Status status = Status.IDLE;
-    private MainActivity activity;
+    private MainActivityContract mainActivityContract;
     private Map<String, String> userListParams = new HashMap<>();
     private List<User> userList = new ArrayList<>();
     private UserProviderService userProviderService;
     private final int RESULTS_PER_PAGE = 20;
     private int currentPage = 0;
 
-    public MainPresenter(MainActivity activity) {
-        this.activity = activity;
+    @Override
+    public void init(MainActivityContract mainActivityContract) {
+        this.mainActivityContract = mainActivityContract;
         userProviderService = WebServicesUtils.getService(UserProviderService.class);
 
         userListParams.put(UserProviderService.RESULTS, String.valueOf(RESULTS_PER_PAGE));
@@ -40,14 +37,16 @@ public class MainPresenter {
         fetchUserList();
     }
 
+    @Override
     public void increaseCurrentPage() {
         currentPage++;
         userListParams.put(UserProviderService.PAGE, String.valueOf(currentPage));
     }
 
+    @Override
     public void fetchUserList() {
         status = Status.FETCHING;
-        activity.onUpdateUserListStarted();
+        mainActivityContract.onUpdateUserListStarted();
         Call<UserListResponse> userListCall = userProviderService.getUsers(userListParams);
         userListCall.enqueue(new Callback<UserListResponse>() {
             @Override
@@ -55,17 +54,18 @@ public class MainPresenter {
                                    Response<UserListResponse> response) {
                 status = Status.IDLE;
                 userList.addAll(UserListResponseMapper.mapUserList(response.body()));
-                activity.onUpdateUserListSucceeded(userList);
+                mainActivityContract.onUpdateUserListSucceeded(userList);
             }
 
             @Override
             public void onFailure(Call<UserListResponse> call, Throwable t) {
                 status = Status.IDLE;
-                activity.onUpdateUserListFailed();
+                mainActivityContract.onUpdateUserListFailed();
             }
         });
     }
 
+    @Override
     public Status getStatus() {
         return status;
     }

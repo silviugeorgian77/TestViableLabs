@@ -11,16 +11,18 @@ import android.support.v7.widget.RecyclerView;
 
 import com.timmystudios.testviablelabs.R;
 import com.timmystudios.testviablelabs.adapters.UserAdapter;
+import com.timmystudios.testviablelabs.contracts.MainActivityContract;
+import com.timmystudios.testviablelabs.contracts.MainPresenterContract;
 import com.timmystudios.testviablelabs.models.User;
 import com.timmystudios.testviablelabs.presenters.MainPresenter;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements MainActivityContract {
 
     private List<User> userList = new ArrayList<>();
-    private MainPresenter mainPresenter;
+    private MainPresenterContract mainPresenterContract;
     private ContentLoadingProgressBar progressBar;
     private RecyclerView recyclerView;
     private UserAdapter userAdapter;
@@ -42,21 +44,23 @@ public class MainActivity extends AppCompatActivity {
         userAdapter = new UserAdapter();
         recyclerView.setAdapter(userAdapter);
 
-        mainPresenter = new MainPresenter(this);
+        mainPresenterContract = new MainPresenter();
+        mainPresenterContract.init(this);
 
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
                 super.onScrollStateChanged(recyclerView, newState);
                 if (!recyclerView.canScrollVertically(1)
-                        && mainPresenter.getStatus() == MainPresenter.Status.IDLE) {
-                    mainPresenter.increaseCurrentPage();
-                    mainPresenter.fetchUserList();
+                        && mainPresenterContract.getStatus() == MainPresenter.Status.IDLE) {
+                    mainPresenterContract.increaseCurrentPage();
+                    mainPresenterContract.fetchUserList();
                 }
             }
         });
     }
 
+    @Override
     public void onUpdateUserListStarted() {
         previousItemCount = userList.size();
         if (userList.isEmpty()) {
@@ -64,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    @Override
     public void onUpdateUserListSucceeded(List<User> userList) {
         this.userList = userList;
         userAdapter.setUserList(userList);
@@ -72,6 +77,7 @@ public class MainActivity extends AppCompatActivity {
         progressBar.hide();
     }
 
+    @Override
     public void onUpdateUserListFailed() {
         showErrorDialog();
         progressBar.hide();
@@ -84,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
             .setPositiveButton(R.string.error_button, new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    mainPresenter.fetchUserList();
+                    mainPresenterContract.fetchUserList();
                 }
             })
             .show();
