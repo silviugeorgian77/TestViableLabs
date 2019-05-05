@@ -19,6 +19,10 @@
     <dimen name="item_user_field_margin_y">@dimen/item_user_padding_x</dimen>
     <!--End Item User-->
 
+    <!--Item Loading-->
+    <dimen name="item_loading_margin_y">20dp</dimen>
+    <!--End Item Loading-->
+
     <!--User Details Activity-->
     <dimen name="user_details_activity_picture_size">200dp</dimen>
     <dimen name="user_details_activity_padding_x">20dp</dimen>
