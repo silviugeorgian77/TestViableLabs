@@ -113,9 +113,6 @@ public class MainActivity extends AppCompatActivity {
             .setPositiveButton(R.string.error_button, new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    Map<String, String> userListParams = new HashMap<>();
-                    userListParams.put(UserProviderService.PAGE, String.valueOf(1));
-                    userListParams.put(UserProviderService.RESULTS, String.valueOf(RESULTS_PER_PAGE));
                     updateUserList();
                 }
             })
