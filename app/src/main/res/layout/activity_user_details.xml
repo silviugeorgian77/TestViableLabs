@@ -73,6 +73,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/user_details_activity_field_margin_small_y"
             android:textSize="@dimen/text_size_big"
+            android:textColor="@color/colorAccent"
             tools:text="Test Email"/>
 
     </LinearLayout>

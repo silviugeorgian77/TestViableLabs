@@ -1,10 +1,14 @@
 package com.timmystudios.testviablelabs.activities;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.text.SpannableString;
+import android.text.style.UnderlineSpan;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -54,7 +58,27 @@ public class UserDetailsActivity extends AppCompatActivity {
 
                     firstNameTextView.setText(user.getFirstName());
                     lastNameTextView.setText(user.getLastName());
-                    emailTextView.setText(user.getEmail());
+
+                    final String emailString = user.getEmail();
+                    SpannableString emailSpannableString = new SpannableString(emailString);
+                    emailSpannableString.setSpan(
+                            new UnderlineSpan(),
+                            0,
+                            emailSpannableString.length(),
+                            0
+                    );
+                    emailTextView.setText(emailSpannableString);
+
+                    emailTextView.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Intent emailIntent = new Intent(
+                                    Intent.ACTION_SENDTO,
+                                    Uri.fromParts("mailto", emailString, null)
+                            );
+                            startActivity(Intent.createChooser(emailIntent, "Send email..."));
+                        }
+                    });
                 }
             }
         }
